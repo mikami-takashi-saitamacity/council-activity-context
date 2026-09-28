@@ -1,8 +1,8 @@
 ---
 context_version: 1
 source_repository: mikami-takashi-saitamacity/council-activity-private
-source_commit: cac96172f19d79fb072f6b77214e9089c12f03dd
-generated_at: 2026-09-28T11:47:10+09:00
+source_commit: 4386352a38a3eaebfa89b3d5e9b89d6db0333e36
+generated_at: 2026-09-28T12:56:28+09:00
 visibility: shared
 ---
 
@@ -79,6 +79,33 @@ publish_scope: shared
 # 原資料の境界
 
 保存TXT、PDF、ZIP、原文本文と大量の本文断片はCURRENT_CONTEXTに含めない。原文を要する照合では別途保存資料や公式原文を確認する。保存TXT内のURL文字列をローカルで抽出することは、この自動アクセス禁止に含まれない。
+
+## _decisions/D-20260928-RESULT-LEVEL-IMMUTABLE.md
+
+---
+id: D-20260928-RESULT-LEVEL-IMMUTABLE
+status: accepted
+date: 2026-09-28
+scope: [db, site]
+target_version: undecided
+summary: >
+  result_level は質問・提案に対する当時の答弁・回答に基づく評価とし、
+  後年の情報で「実施済」等へ上書きしない。後年の市の動きは当時評価と
+  区別して扱う。当時資料の読み違い等、当時の判定自体の誤りを根拠に
+  基づいて訂正することは、後年の進展による再評価と区別する。
+supersedes: none
+related_files: [v1.2.0/specs/budget_step10_spec.md]
+publish_scope: shared
+---
+
+# 当時の評価と後年の動き
+
+三神が2026-09-22に承認した予算提案の現行仕様（`v1.2.0/specs/budget_step10_spec.md`「評価の基準時点と将来の追跡評価」）を、共通の判断INDEXへ登録する。議事録も答弁時点と後年の進展を区別する。既存議事録の評価に後年の再判定が混入していないかは、版別の監査資料を確認する。この判断だけをもって全カードの時点整合が監査済みとみなさない。
+
+- 当時の評価は、その質問・提案に対する当時の答弁・回答を根拠とする。提案時点や現在の状態と混同しない。
+- 後年に事業が実施・改善された場合も、当時の`result_level`をその事実だけで「実施済」等へ変更しない。後年の動きは別のレイヤーで記録・表示する。
+- 当時資料の読み違い等が確認された場合は、当時の判定の訂正と後年の進展による評価更新を区別し、訂正の根拠を残す。後年の実現を「当時の判定の誤り」と呼び換えない。
+- 追跡評価のフィールド、変更履歴の保存形式、サイト表示、版番号、実装時期は後続工程で定める。今回の判断は公開DBやschemaの改訂を意味しない。
 
 ## _decisions/D-20260928-SOURCE-OF-TRUTH.md
 
