@@ -1,8 +1,8 @@
 ---
 context_version: 1
 source_repository: mikami-takashi-saitamacity/council-activity-private
-source_commit: fc28af0e8a6b2e991cda008f369cc530199d54ff
-generated_at: 2026-09-29T20:22:13+09:00
+source_commit: fe5a690204e255ed73912dac55b24d5aaddfdab1
+generated_at: 2026-09-29T20:36:11+09:00
 visibility: shared
 ---
 
@@ -59,6 +59,34 @@ publish_scope: shared
 # 確認済み表示
 
 未確認カードに確認済みバッジを付けず、「照合中」等の表示も必須としない。field名、review workflow、schema、表示実装、版番号は未決定。
+
+## _decisions/D-20260928-JISSHI-AUDIT-PLAN.md
+
+---
+id: D-20260928-JISSHI-AUDIT-PLAN
+status: accepted
+date: 2026-09-29
+scope: [workflow, db]
+target_version: undecided
+summary: >
+  旧「実施済」140件の第一段階監査について、
+  監査範囲・独立記録・三神の原文確認条件・試行の停止条件・raw境界の
+  5つの約束を定める。
+supersedes: none
+related_files: [_proposals/D-20260928-JISSHI-AUDIT-PLAN.md, _proposals/P-20260928-JISSHI-AUDIT-PLAN.md, _decisions/D-20260928-JISSHI-DEFINITION.md, _decisions/D-20260928-RESULT-LEVEL-IMMUTABLE.md, _decisions/D-20260928-RAW-BOUNDARY.md, _decisions/D-20260928-HUMAN-VERIFICATION-BADGE.md]
+publish_scope: shared
+---
+
+# 旧「実施済」第一段階監査の5つの約束（確定判断）
+
+承認者: 三神。承認日: 2026-09-29。承認対象: [PR #64](https://github.com/mikami-takashi-saitamacity/council-activity-private/pull/64) の5つの約束（head commit: `1c26f461f31aaeaa1129f768767b85bca6d6624a`）。三神の本依頼に基づき、同じ本文をaccepted decisionとして登録する。元のproposalは `_proposals/D-20260928-JISSHI-AUDIT-PLAN.md` に `status: proposed` のまま保存し、承認の経緯を残す。
+
+1. **監査の範囲**: 第一段階は、旧「実施済」140件（議事録99、予算提案41）の全件とする。第一段階の完了だけで、定義の移行が完了したとはしない（`D-20260928-JISSHI-DEFINITION` §6）。
+2. **独立記録**: 旧公開値、訂正の有無、新定義での判定結果、定義移行への該当、
+   後年情報の有無の5項目を、互いに独立して記録する。
+3. **人による確認の条件**: 監査記録の「三神確認済み」（作業用の記録項目。`mikami_confirmed=true`）は、質問・答弁・判定根拠を、三神が原文で直接確認した場合に限る。予算提案では質問を提案、答弁を回答と読み替える。この記録項目は、公開データのfield名や、確認済み表示の実装（`D-20260928-HUMAN-VERIFICATION-BADGE`）を決めるものではない。
+4. **試行の停止条件**: 試行5件のうち、判定を保留したものが3件以上なら、設計を見直し、三神が再承認するまで、本監査に進まない。「『保留』とは、三神が試行の確認の際に、判定を確定できないとして『保留』を選んだものをいう。」
+5. **raw境界**: 原文・PDFをGitHubへ置かない。`D-20260928-RAW-BOUNDARY`に従う。
 
 ## _decisions/D-20260928-JISSHI-DEFINITION.md
 
@@ -302,3 +330,32 @@ publish_scope: shared
 # 仕様と判断の正本
 
 仕様判断はprivate mainの`_decisions/INDEX.md`、現行仕様、実装現物の順に確認する。CURRENT_CONTEXTはそのcommitの参照用スナップショットであり、取得に失敗した場合は記憶から仕様を補わない。
+
+## _decisions/D-20260929-URL-PER-SPEECH-BLOCK.md
+
+---
+id: D-20260929-URL-PER-SPEECH-BLOCK
+status: accepted
+date: 2026-09-29
+scope: [db, site, workflow]
+target_version: undecided
+summary: >
+  議事録カードの公式source_urlを発言ブロック単位で管理し、
+  三神による発言位置のブラウザ確認と会議録サイトへの自動アクセス禁止を守る。
+supersedes: none
+related_files: [_proposals/D-20260929-URL-PER-SPEECH-BLOCK.md, _decisions/D-20260928-RAW-BOUNDARY.md]
+publish_scope: shared
+---
+
+# 発言ブロック別URL（確定判断）
+
+承認者: 三神。承認日: 2026-09-29。承認対象: [PR #62](https://github.com/mikami-takashi-saitamacity/council-activity-private/pull/62) の修正後の6項目（head: `59e3a0d99721626c60dd672e3c11bfdd520bef9a`）。三神の本依頼によって、この6項目をaccepted decisionへ昇格する。元のproposalは `_proposals/D-20260929-URL-PER-SPEECH-BLOCK.md` に `status: proposed` のまま保管し、承認の経緯を残す。以下の6項目以外に運用手順・検証方法の詳細を新たに定めない。
+
+v1.3.0 の一部カード(9件)でURLが別の日の会議を指していたためv1.3.1 で訂正したこと、また会議録検索システムの minute_id は会議ごとに開始の番号が異なることを踏まえ、URLの単位と確認の原則を判断として定める。
+
+1. **URLの単位**：公式議事録URLは発言ブロック単位とする。
+2. **URLを共有できる場合**：同一発言ブロックから分割したカードだけが、同じURLを共有する。
+3. **別ブロックのURL**：別の三神発言ブロックに基づくカードには別URLを付ける。既存の発言ブロック別URLを、会議単位のURLで上書きしない。ただし、別の日・別の会議を指す等の誤りは、確認のうえ、訂正できる。
+4. **再質問の扱い**：再質問のブロックには、独立したカードにならない限り別URLを付けない。カードのURLはカードの対象となる質問・提案・討論等の発言が始まるブロックを指す。
+5. **URL位置の確認**：三神がブラウザで発言位置を確認したものを、公開の根拠とする。確認の範囲と方法(会議単位の抜き取りを含む)は、別の手順で定め、三神が承認する。人の確認を経ていない範囲は、公開しない。`minute_id` と発言ブロックの位置の対応規則は、URL位置の予測にのみ使い、確認の代わりにしない。
+6. **自動アクセス禁止**：`ssp.kaigiroku.net`への自動アクセスは行わない。(D-20260928-RAW-BOUNDARY に従う)
