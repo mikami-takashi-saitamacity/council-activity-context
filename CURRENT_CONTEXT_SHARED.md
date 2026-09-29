@@ -1,8 +1,8 @@
 ---
 context_version: 1
 source_repository: mikami-takashi-saitamacity/council-activity-private
-source_commit: ba0eab14c93479ab6c2f391ae99e0576c3a7797e
-generated_at: 2026-09-29T20:14:18+09:00
+source_commit: fc28af0e8a6b2e991cda008f369cc530199d54ff
+generated_at: 2026-09-29T20:22:13+09:00
 visibility: shared
 ---
 
