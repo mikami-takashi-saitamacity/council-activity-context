@@ -1,8 +1,8 @@
 ---
 context_version: 1
 source_repository: mikami-takashi-saitamacity/council-activity-private
-source_commit: e7b64d68ff52797aad5306c9cf0d327b8756abab
-generated_at: 2026-10-01T17:54:01+09:00
+source_commit: e9668b3fec2442853f29983023da299a41d0558d
+generated_at: 2026-10-02T04:12:51+09:00
 visibility: shared
 ---
 
@@ -496,3 +496,126 @@ GitHubへ保存しない。URL付与には次の固定出力を使い、実行�
 原文、会議録本文、カードの原文の引用、raw会議録および固定出力本体をGitHubへ
 保存しない。`D-20260928-RAW-BOUNDARY`に従い、`ssp.kaigiroku.net`への
 自動アクセスを行わない。
+
+## _decisions/D-20261002-CAUSAL-WORDING-SCOPE.md
+
+---
+id: D-20261002-CAUSAL-WORDING-SCOPE
+status: accepted
+date: 2026-10-02
+scope: [site, db]
+target_version: undecided
+summary: >
+  D-20260928-CAUSAL-ATTRIBUTION を、公開中のサイトの文言とfollow_upに適用する
+  範囲と順序を定める。サイトの見出し・説明の変更はデータの版と別に先に行え、
+  follow_upの文面訂正は別の版にまとめる。決定の内容は変えない。
+supersedes: none
+related_files: [_proposals/P-20261001-CAUSAL-WORDING-SCOPE.md, _decisions/D-20260928-CAUSAL-ATTRIBUTION.md, _decisions/D-20260928-HUMAN-VERIFICATION-BADGE.md, _decisions/D-20260928-JISSHI-DEFINITION.md, _decisions/D-20260928-RESULT-LEVEL-IMMUTABLE.md]
+publish_scope: shared
+---
+
+# 後年の動きの欄の文言と範囲(確定判断)
+
+承認者: 三神。承認日: 2026-10-02。承認対象: [PR #78](https://github.com/mikami-takashi-saitamacity/council-activity-private/pull/78) のproposal（merge commit: `e7b64d68ff52797aad5306c9cf0d327b8756abab`）。三神の本依頼によって、この方針をaccepted decisionへ昇格する。元のproposalは `_proposals/P-20261001-CAUSAL-WORDING-SCOPE.md` に `status: proposed` のまま保管し、承認の経緯を残す。
+
+## 目的
+D-20260928-CAUSAL-ATTRIBUTION を、公開中のサイトの文言と follow_up に適用する範囲と順序を定める。決定の内容は変えない。
+
+## 提案(三神が承認した方針)
+1 サイトの欄の見出しを「その後の市の動き」に変える(🎉は外す)。対象は、archive.html、archive-text.html(生成元の site_pages.py)、導入文、meta の説明文。
+2 「根拠となる出典は欄に記載」の文を、実態に合わせて直す(『その後の市の動き』欄は、後年に確認できた市の動きを事実として記すもので、三神の質問・提案との因果関係を示すものではない。出典の記載は整備の途中)。
+3 report.html、manifesto.html、index.html の見出しは、今回の対象に含めない。別に判断する。
+4 サイトの文言のみの変更は、データの版とは別に先に行える。
+5 follow_up の文面訂正は、001099・001187・001205・000694 の文面訂正と同じ版にまとめる。付与の版、件数が変わる版とは別。
+
+## follow_up の書き方
+- 事実の記述は、公開資料の出典と確認日を付ければ載せてよい(STRATEGY §4.5・§4.7)。経緯や時期が不明でも、現況を載せられる。
+- 形式:「(事実)。(出典:○○、○年○月○日確認)」。出典は、follow_up_evidence が使えるまで、本文に書く。
+- 載せないもの:提案との因果を主張する文、出典のない断定、質問の対象と無関係な動き。
+
+## 文面訂正の版の内訳(別の版)
+- 000663:新設日を2026年4月から2025年11月17日に訂正し、因果の文を削除。出典は国際興業バス「系統新設/ダイヤ改正のお知らせ」(2025年10月31日掲載)。
+- 000643:follow_up を空にする(別カードの文の混入)。
+- 000844:follow_up を、片柳ひかり・片柳のぞみがともに片柳小学校内にあるという現況に(出典:さいたま子育てWEBの2ページ、2026年10月1日確認)。answer_summary を、答弁の趣旨(校内整備は実施設計中、来年度に改修工事)に直す。
+- 000814:follow_up を空にする(市レベルの出典が見つからない)。
+- 001002:follow_up を、2017年6月7日の「さいたま市議会の本会議等における情報通信機器の使用に関する基準」の施行に(出典:さいたま市議会「さいたま市議会の議会改革」と同基準)。「ペーパーレス」と「模擬選挙」の文は削除。
+- 001099、001187(「観光宣伝部長」を「さいたま観光大使」に)、001205(表題「契約公開制度」を実際の条例名に)、000694(表題を「次世代スポーツ施設」に)。
+- CHANGELOG に、各カードの訂正の根拠を記載する。
+
+## 別に決めること(今回は決めない)
+- HP版の履歴注記、policy.html の表。
+- 001343 の統合(件数が変わる版)。
+- result_level の見直し(旧「実施済」の監査)。
+- follow_up_evidence の field 名・schema、版番号、実装時期(CAUSAL-ATTRIBUTION が未決定とした事項)。
+
+## _decisions/D-20261002-HP-RESULT-LEVEL-TEXT.md
+
+---
+id: D-20261002-HP-RESULT-LEVEL-TEXT
+status: accepted
+date: 2026-10-02
+scope: [site]
+target_version: undecided
+summary: >
+  サイトの「対応状況の判定基準」の説明を、DBのREADMEの定義に合わせる。
+  「検討へ」「研究段階」「提案のみ」の3行を対象とし、「実施済」は新基準のデータを
+  公開するまで変更しない。サイトの文言のみで、公開データには触れない。
+supersedes: none
+related_files: [_proposals/P-20261001-HP-RESULT-LEVEL-TEXT.md, _decisions/D-20260928-JISSHI-DEFINITION.md, _decisions/D-20260928-RESULT-LEVEL-IMMUTABLE.md]
+publish_scope: shared
+---
+
+# HP の判定基準の説明を README に合わせる(確定判断)
+
+承認者: 三神。承認日: 2026-10-02。承認対象: [PR #77](https://github.com/mikami-takashi-saitamacity/council-activity-private/pull/77) のproposal（merge commit: `e56b721f9de299dfbfbbc34682c4afcead80c217`）。三神の本依頼によって、この方針をaccepted decisionへ昇格する。元のproposalは `_proposals/P-20261001-HP-RESULT-LEVEL-TEXT.md` に `status: proposed` のまま保管し、承認の経緯を残す。
+
+## 提案(三神が2026-10-01に承認した方針)
+1 「検討へ」「研究段階」「提案のみ」の3行を、READMEの定義に合わせる。
+2 「実施済」の行は、新基準のデータを公開するまで変更しない(D-20260928-JISSHI-DEFINITION §8-2)。
+3 HP版の履歴注記(§8-1 に相当)を入れるかは、三神が別途決める。
+4 policy.html の表の扱いは、別途決める。
+
+## 影響
+- サイトの文言のみ。公開データには触れない。
+- 件数が変わる版とは別の版で行う。
+
+## _decisions/D-20261002-SHARED-BLOCK-CRITERIA.md
+
+---
+id: D-20261002-SHARED-BLOCK-CRITERIA
+status: accepted
+date: 2026-10-02
+scope: [workflow, db]
+target_version: undecided
+summary: >
+  D-20260929-URL-PER-SPEECH-BLOCK 項目2・3 の運用上の判定基準。同一発言ブロックから
+  分割したカードがURLを共有できる条件と、共有してはならない型を定める。
+  決定の内容は変えず、公開データ・サイト・tag・Releaseには触れない。
+supersedes: none
+related_files: [_proposals/P-20261001-SHARED-BLOCK-CRITERIA.md, _decisions/D-20260929-URL-PER-SPEECH-BLOCK.md, _decisions/D-20260930-URL-ASSIGNMENT-655.md]
+publish_scope: shared
+---
+
+# 共有ブロックの適用基準(確定判断)
+
+承認者: 三神。承認日: 2026-10-02。承認対象: [PR #76](https://github.com/mikami-takashi-saitamacity/council-activity-private/pull/76) のproposal（merge commit: `a415f06a717e1ec7ad21140cc4ed183223dee4d2`）。三神の本依頼によって、この基準をaccepted decisionへ昇格する。元のproposalは `_proposals/P-20261001-SHARED-BLOCK-CRITERIA.md` に `status: proposed` のまま保管し、承認の経緯を残す。
+
+## 目的
+D-20260929-URL-PER-SPEECH-BLOCK 項目2・3 の運用上の判定基準を定める。決定の内容は変えない。
+
+## 項目2の「同一発言ブロックから分割したカード」の判定(すべて満たす)
+1 そのカードの会議に、論点語が揃う三神ブロックが、他に存在しない(保存TXTでの語の有無の確認)。
+2 共有する各カードの論点が、ブロック内で別々の位置に、順に並んでいる。
+3 共有する各カードが、三神による直接確認(ブラウザ)でOKである(項目5)。
+
+## 項目3に当たる型(共有してはならない)
+- 別の適切な三神ブロックが存在するのに、共有ブロックを指しているカード。再探索で別URLにする。
+- 同じ論点を重複して持つカード(例:001342 と 001343)。統合を検討する。
+
+## 確認方法の補足
+- リンク先の確認では、質問が始まる三神ブロックであることを位置の条件とし、直後の答弁まで見て論点が揃うかを、補助の根拠とする。URLは質問のブロックのままとする。
+- 論点が、ブロック内の途中から始まっていてもよい。
+
+## 影響
+- カードの件数・schema は変わらない。
+- 直接確認が済むまで、共有ブロックのカードは「標本確認に基づく」の区分に残す。READMEとCHANGELOGで、直接確認と標本確認を区別して開示する(D-20260930-URL-ASSIGNMENT-655 §9)。
